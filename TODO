@@ -1,0 +1,3 @@
+Tab navigation: syspanel, Nova, Cinder
+Add Usage tally: https://github.com/openstack/horizon/blob/master/openstack_dashboard/usage/quotas.py#L256
+

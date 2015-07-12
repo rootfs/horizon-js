@@ -14,7 +14,7 @@ var RootView = Backbone.View.extend({
     
     onCredentialsSubmit: function(e){
         e.preventDefault();
-        this.model.setCredentials(this.$('input[name=username]').val(), this.$('input[name=password]').val());
+		this.model.setCredentials(this.$('input[name=username]').val(), this.$('input[name=password]').val(), this.$('input[name=tenant]').val(), this.$('input[name=auth_url]').val());
     },
     
     onCloseErrorMsg: function(e) {
