@@ -18,15 +18,15 @@ var VolumeSnapshot = Backbone.Model.extend({
         switch(method) {
             case "create": 
             console.log('Creating volume snapshot');
-            	JSTACK.Nova.Volume.createsnapshot(model.get("volume_id"), model.get("name"), model.get("description"), options.success);
+            	JSTACK.Cinder.createsnapshot(model.get("volume_id"), model.get("name"), model.get("description"), options.success);
                 break;
             case "delete":
-                JSTACK.Nova.Volume.deletesnapshot(model.get("id"), options.success);
+                JSTACK.Cinder.deletesnapshot(model.get("id"), options.success);
                 break;
             case "update":
                 break;
             case "read":
-                JSTACK.Nova.Volume.getsnapshot(model.get("id"), options.success);
+                JSTACK.Cinder.getsnapshot(model.get("id"), options.success);
                 break;
         }
     },
@@ -40,6 +40,7 @@ var VolumeSnapshot = Backbone.Model.extend({
     }
 });
 
+
 var VolumeSnapshots = Backbone.Collection.extend({
     
     model: VolumeSnapshot,
@@ -47,7 +48,7 @@ var VolumeSnapshots = Backbone.Collection.extend({
     sync: function(method, model, options) {
         switch(method) {
             case "read":
-                JSTACK.Nova.Volume.getsnapshotlist(true, options.success);
+                JSTACK.Cinder.getsnapshotlist(true, options.success);
                 break;
         }
     },

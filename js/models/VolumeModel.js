@@ -16,15 +16,15 @@ var Volume = Backbone.Model.extend({
     sync: function(method, model, options) {
         switch(method) {
             case "create":
-                JSTACK.Nova.Volume.createvolume(model.get("size"), model.get("name"), model.get("description"), options.success);
+                JSTACK.Cinder.createvolume(model.get("size"), model.get("name"), model.get("description"), options.success);
                 break;
             case "delete":
-                JSTACK.Nova.Volume.deletevolume(model.get("id"), options.success);
+                JSTACK.Cinder.deletevolume(model.get("id"), options.success);
                 break;
             case "update":
                 break;
             case "read":
-                JSTACK.Nova.Volume.getvolume(model.get("id"), options.success);
+                JSTACK.Cinder.getvolume(model.get("id"), options.success);
                 break;
         }
     },
@@ -45,7 +45,7 @@ var Volumes = Backbone.Collection.extend({
     sync: function(method, model, options) {
         switch(method) {
             case "read":
-                JSTACK.Nova.Volume.getvolumelist(true, options.success);
+                JSTACK.Cinder.getvolumelist(true, options.success);
                 break;
         }
     },
@@ -53,5 +53,5 @@ var Volumes = Backbone.Collection.extend({
     parse: function(resp) {
         return resp.volumes;
     }
-    
+	
 });
