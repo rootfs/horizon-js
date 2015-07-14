@@ -27,4 +27,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
     $ /usr/bin/google-chrome-stable --user-data-dir="/tmp/" --disable-web-security
     
-    [screenshot](horizon-js.png)
+## Screenshot
+
+ A [screenshot](horizon-js.png) can be used as configuration example.
