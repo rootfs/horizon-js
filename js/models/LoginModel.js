@@ -81,11 +81,14 @@ var LoginStatus = Backbone.Model.extend({
         this.set({'token': ''});
     },
     
-    setCredentials: function(username, password, tenant) {
+    setCredentials: function(username, password, tenant, url) {
 		var t = tenant;
 		if (t === '') {
 			t = undefined
 		}
+        if (url !== undefined && url !== '') {
+            UTILS.Auth.initialize(url);
+        }
         this.set({'username': username, 'password': password, 'tenant': t, 'error_msg':undefined});
         this.trigger('credentials', this);
     },
