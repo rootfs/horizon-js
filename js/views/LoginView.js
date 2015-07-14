@@ -25,7 +25,7 @@ var LoginView = Backbone.View.extend({
     
     onLogin: function() {
         if (this.model.get('loggedIn')) {
-            console.log("Next view:" + this.options.next_view);
+            console.log("Login view Next view:" + this.options.next_view);
             if (this.options.next_view != undefined) {
                 window.location.href = "#" + this.options.next_view;
             } else {
