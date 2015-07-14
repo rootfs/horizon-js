@@ -25,7 +25,7 @@ var LoginStatus = Backbone.Model.extend({
     onCredentialsChange: function (model, password) {
         var self = this;
         if (self.get("username") != '' && self.get("password") != '') {
-            UTILS.Auth.authenticate(self.get("username"), self.get("password"), undefined, undefined, function() {
+            UTILS.Auth.authenticate(self.get("username"), self.get("password"), self.get("tenant"), undefined, function() {
                 console.log("Authenticated with credentials");
                 self.setToken();
                 self.set({username: UTILS.Auth.getName(), tenant: UTILS.Auth.getCurrentTenant()});
@@ -81,9 +81,12 @@ var LoginStatus = Backbone.Model.extend({
         this.set({'token': ''});
     },
     
-    setCredentials: function(username, password) {
-        console.log("Setting credentials");
-        this.set({'username': username, 'password': password, 'error_msg':undefined});
+    setCredentials: function(username, password, tenant) {
+		var t = tenant;
+		if (t === '') {
+			t = undefined
+		}
+        this.set({'username': username, 'password': password, 'tenant': t, 'error_msg':undefined});
         this.trigger('credentials', this);
     },
     
