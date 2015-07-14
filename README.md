@@ -29,5 +29,5 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
     
 ## Screenshot
 
- A ![alt text][screenshot] can be used as configuration example.
+ ![alt text][screenshot] The screenshot can be used as configuration example.
 [screenshot]: horizon-js.png
