@@ -7,7 +7,8 @@ var LoginStatus = Backbone.Model.extend({
         error_msg: null,
         token: '',
         tenant: undefined,
-        tenants: undefined
+        tenants: undefined,
+        url: null
     },
 
     initialize: function () {
@@ -50,6 +51,7 @@ var LoginStatus = Backbone.Model.extend({
         if (!UTILS.Auth.isAuthenticated() && token != '') {
             UTILS.Auth.authenticate(undefined, undefined, undefined, token, function() {
                 console.log("Authenticated with token");
+                UTILS.Auth.initialize(self.get("url"));
                 self.set({username: UTILS.Auth.getName(), tenant: UTILS.Auth.getCurrentTenant()});
                 console.log("New tenant: " + self.get("name"));
                 UTILS.Auth.getTenants(function(tenants) {
@@ -87,6 +89,8 @@ var LoginStatus = Backbone.Model.extend({
 			t = undefined
 		}
         if (url !== undefined && url !== '') {
+            var self = this;
+            self.set({url: url});
             UTILS.Auth.initialize(url);
         }
         this.set({'username': username, 'password': password, 'tenant': t, 'error_msg':undefined});
