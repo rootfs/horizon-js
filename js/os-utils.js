@@ -20,6 +20,12 @@ UTILS.Auth = (function(U, undefined) {
         return JSTACK.Keystone.params.token;
     }
     
+	function getKeystoneURL() {
+        var url = JSTACK.Keystone.params.url;
+		console.log("keystone url:", url);
+		return url;
+    }
+	
     function getName() {
         return JSTACK.Keystone.params.access.user.name;
     }
@@ -129,7 +135,8 @@ UTILS.Auth = (function(U, undefined) {
         getCurrentTenant: getCurrentTenant,
         getTenants: getTenants,
         switchTenant: switchTenant,
-        isAdmin: isAdmin
+        isAdmin: isAdmin,
+		getKeystoneURL: getKeystoneURL
     }
 
 })(UTILS);

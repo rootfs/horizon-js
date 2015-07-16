@@ -26,6 +26,7 @@ var LoginStatus = Backbone.Model.extend({
     onCredentialsChange: function (model, password) {
         var self = this;
         if (self.get("username") != '' && self.get("password") != '') {
+		    UTILS.Auth.initialize(UTILS.Auth.getKeystoneURL());
             UTILS.Auth.authenticate(self.get("username"), self.get("password"), self.get("tenant"), undefined, function() {
                 console.log("Authenticated with credentials");
                 self.setToken();
@@ -47,11 +48,13 @@ var LoginStatus = Backbone.Model.extend({
     
     onTokenChange: function (context, token) {
         var self = context;
-        console.log(token);
+        //console.log(token);
         if (!UTILS.Auth.isAuthenticated() && token != '') {
+		    if (UTILS.Auth.getKeystoneURL() != null) {
+				UTILS.Auth.initialize(UTILS.Auth.getKeystoneURL());
+			}
             UTILS.Auth.authenticate(undefined, undefined, undefined, token, function() {
                 console.log("Authenticated with token");
-                UTILS.Auth.initialize(self.get("url"));
                 self.set({username: UTILS.Auth.getName(), tenant: UTILS.Auth.getCurrentTenant()});
                 console.log("New tenant: " + self.get("name"));
                 UTILS.Auth.getTenants(function(tenants) {
@@ -90,7 +93,6 @@ var LoginStatus = Backbone.Model.extend({
 		}
         if (url !== undefined && url !== '') {
             var self = this;
-            self.set({url: url});
             UTILS.Auth.initialize(url);
         }
         this.set({'username': username, 'password': password, 'tenant': t, 'error_msg':undefined});
