@@ -1,3 +1,5 @@
 .DS_Store
 .project
 .settings
+templates/auth/login.html
+templates/auth/login.html
