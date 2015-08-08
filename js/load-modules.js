@@ -4,7 +4,7 @@ function custom_require(urls, callback) {
     for (var index in urls) {
         var url = urls[index];
         if (navigator.userAgent.indexOf("MSIE") !=-1 || true) {
-           url += "?random=" + Math.random()*99999;
+           //url += "?random=" + Math.random()*99999;
            urls[index] = url;
         }
     }
