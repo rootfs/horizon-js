@@ -62,7 +62,7 @@ UTILS.Auth = (function(U, undefined) {
         
         var _authenticatedWithTenant = function (resp) {
             console.log("Authenticated");
-            console.log(JSON.stringify(resp));
+            //console.log(JSON.stringify(resp));
             callback();
         }
         
