@@ -8,7 +8,7 @@ var NavTabView = Backbone.View.extend({
     
     render: function () {
         var self = this;
-        $(self.el).empty().html(self._template({models: self.model.models, showAdmin: this.options.loginModel.isAdmin(), tenants: this.options.tenants, tenant: this.options.tenant}));
+        $(self.el).empty().html(self._template({models: self.model.models, showAdmin: true/*this.options.loginModel.isAdmin()*/, tenants: this.options.tenants, tenant: this.options.tenant}));
         return this;
     }
     
